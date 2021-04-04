@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Stock;
-use App\Models\Perfume;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class DashboardController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +16,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $perfumes = Perfume::orderBy('id', 'desc')->paginate(6);
         $stock = Stock::all();
 
-        return Inertia::render('Dashboard', [
-            'perfumes' => $perfumes,
+        return Inertia::render('Stock/Stock', [
             'stock' => $stock
         ]);
     }
@@ -33,7 +30,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -45,23 +42,24 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $ml_perfume = $request->ml_water + $request->ml_alcohol + $request->ml_fragrance;
-        
-        //dd($ml_perfume);
-        Perfume::create([
-            'name' => $request->name,
-            'ml_perfume' => $ml_perfume,
-            'ml_water' => $request->ml_water,
-            'ml_alcohol' => $request->ml_alcohol,
-            'ml_fragrance' => $request->ml_fragrance,         
-            'name_fragrance' => $request->name_fragrance,
-            'ml_most_used_fragrance' => 0,
-            'amount_created' => 0,
-            'quantity_available_for_breeding' => 0
-        ]);
-
-        return Redirect::route('dashboard');
-
+        $stock = $request->name_fragrance;
+        $stock_id = Stock::where('name_fragrance', 'like', '%'.$stock.'%')->value('id');
+        //dd($stock_id);
+        if($stock_id){
+            $update = Stock::find($stock_id);
+            $update->ml_water       = $request->ml_water + $update->ml_water ;
+            $update->ml_alcohol     = $request->ml_alcohol + $update->ml_alcohol;
+            $update->ml_fragrance   = $request->ml_fragrance + $update->ml_fragrance;
+            $update->save();
+        } else {
+            Stock::create([
+                'ml_water' => $request->ml_water,
+                'ml_alcohol' => $request->ml_alcohol,
+                'ml_fragrance' => $request->ml_fragrance,         
+                'name_fragrance' => $request->name_fragrance,
+            ]);
+        }        
+        return Redirect::route('stock.index');
     }
 
     /**

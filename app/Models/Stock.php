@@ -10,7 +10,7 @@ class Stock extends Model
     use HasFactory;
 
     protected $fillable=[ 
-        'ml_perfume', 
+        'ml_water', 
         'ml_alcohol', 
         'ml_fragrance', 
         'name_fragrance',
