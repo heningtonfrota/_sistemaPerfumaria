@@ -12,6 +12,7 @@ class Perfume extends Model
     protected $fillable=[
         'name', 
         'ml_perfume', 
+        'ml_water',
         'ml_alcohol', 
         'ml_fragrance', 
         'name_fragrance', 

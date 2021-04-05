@@ -17,9 +17,14 @@ class StockController extends Controller
     public function index()
     {
         $stock = Stock::all();
+        $stock_water = Stock::all()->sum('ml_water');
+        $stock_alcohol = Stock::all()->sum('ml_alcohol');
+        //dd($stock_water, $stock_alcohol);
 
         return Inertia::render('Stock/Stock', [
-            'stock' => $stock
+            'stock' => $stock,
+            'stock_water' => $stock_water,
+            'stock_alcohol' => $stock_alcohol
         ]);
     }
 
@@ -106,4 +111,6 @@ class StockController extends Controller
     {
         //
     }
+
+    
 }

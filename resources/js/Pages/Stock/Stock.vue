@@ -1,6 +1,5 @@
 <template>
     <navbar />
-
     <h1>Estoque Fábrica de Perfume</h1>
     <div class="container mx-auto">
         <div class="row">
@@ -55,8 +54,15 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="card">
+                    <div class="card-body">
+                        Total de Água: {{ stock_water }}/ml
+                        <br> 
+                        Total de Alcool: {{ stock_alcohol }}/ml
+                    </div>
+                </div>
             </div>
-        </div>
+        </div>        
     </div>
 
     
@@ -72,7 +78,9 @@ import { Inertia } from '@inertiajs/inertia'
 export default {
     components: { Navbar  },
     props: {
-        stock: Object
+        stock: Object,
+        stock_water: Number,
+        stock_alcohol: Number
     },   
     setup () {
         const form = reactive({

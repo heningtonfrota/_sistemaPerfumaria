@@ -13,6 +13,9 @@
                     <li class="nav-item">
                         <inertia-link class="nav-link active" aria-current="page" href="/stock">Stock</inertia-link>
                     </li>
+                    <li class="nav-item">
+                        <inertia-link class="nav-link active" aria-current="page" href="/reports">Reports</inertia-link>
+                    </li>
                 </ul>
             </div>
         </div>
