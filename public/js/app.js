@@ -38724,6 +38724,22 @@ var map = {
 	"./Dashboard.vue": [
 		"./resources/js/Pages/Dashboard.vue",
 		"resources_js_Pages_Dashboard_vue"
+	],
+	"./Reports": [
+		"./resources/js/Pages/Reports.vue",
+		"resources_js_Pages_Reports_vue"
+	],
+	"./Reports.vue": [
+		"./resources/js/Pages/Reports.vue",
+		"resources_js_Pages_Reports_vue"
+	],
+	"./Stock/Stock": [
+		"./resources/js/Pages/Stock/Stock.vue",
+		"resources_js_Pages_Stock_Stock_vue"
+	],
+	"./Stock/Stock.vue": [
+		"./resources/js/Pages/Stock/Stock.vue",
+		"resources_js_Pages_Stock_Stock_vue"
 	]
 };
 function webpackAsyncContext(req) {
@@ -38850,7 +38866,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_Pages_Dashboard_vue") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Dashboard_vue":1,"resources_js_Pages_Reports_vue":1,"resources_js_Pages_Stock_Stock_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
